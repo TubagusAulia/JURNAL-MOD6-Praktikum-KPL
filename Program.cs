@@ -28,8 +28,8 @@ namespace modul6_103022300141
             SayaTubeVideo video10 = new SayaTubeVideo("Review Film Gadis Kretek oleh Tubagus");
             tubagus.AddVideo(video10);
 
-
             tubagus.PrintAllVideoPlayCount();
+
         }
     }
 }

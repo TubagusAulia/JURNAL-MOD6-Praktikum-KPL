@@ -14,6 +14,11 @@ namespace modul6_103022300141
 
         public SayaTubeVideo (string title)
         {
+            if (string.IsNullOrEmpty(title) || title.Length > 200)
+            {
+                throw new ArgumentException("Judul tidak valid.");
+            }
+
             Random random = new Random();
             this.id = random.Next(10000, 99999);
             this.title = title;
@@ -22,7 +27,23 @@ namespace modul6_103022300141
 
         public void IncreasePlayCount (int i)
         {
-            this.playCount += i;
+            if (i < 1 || i > 25000000)
+            {
+                throw new ArgumentException("Penambahan PlayCount tidak valid.");          
+            } 
+
+            try
+            {
+                checked
+                {
+                    this.playCount += i;
+                }
+            } catch (OverflowException)
+            {
+                Console.WriteLine("Penambahan PlayCount mengakibatkan Overflow");
+            }
+
+                this.playCount += i;
         }
 
         public void PrintVideoDetais ()
